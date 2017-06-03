@@ -7,7 +7,7 @@ import android.media.ExifInterface;
 import android.support.annotation.Nullable;
 
 /**
- * Created by gsy on 17/6/3.
+ * 图片的Utils类，提供从SD卡加载图片的功能，注意，需要权限，不然返回的bitmap会为null
  */
 
 public class BitmapUtils {

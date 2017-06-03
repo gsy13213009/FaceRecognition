@@ -20,8 +20,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
 /**
- * Created by gsy on 17/6/3.
- * 自定义的ImageView，实现图片的拖动，缩放，显示人脸识别的红框
+ * 自定义的ImageView，实现图片的拖动，缩放，显示人脸识别的结果
  */
 public class MyImageView extends ImageView {
     private static final int SINGLE_OPERATION = 0;                  // 单指触控
@@ -135,9 +134,12 @@ public class MyImageView extends ImageView {
                         }
                     } else if (scale <= 1 && (int) getMatrixRectF().width() <= getLayoutParams().width
                             && (int) getMatrixRectF().height() <= getLayoutParams().height) {
+                        // 保证当图片全部缩小在显示范围内便不能再缩小
                         if (mIsVerticalFit) {
+                            // 竖直取高
                             mResetScale = getLayoutParams().height / getMatrixRectF().height();
                         } else {
+                            // 水平取宽
                             mResetScale = getLayoutParams().width / getMatrixRectF().width();
                         }
                     } else {
