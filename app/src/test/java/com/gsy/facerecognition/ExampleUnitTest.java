@@ -1,4 +1,4 @@
-package com.example.gsy.facerecognition;
+package com.gsy.facerecognition;
 
 import org.junit.Test;
 

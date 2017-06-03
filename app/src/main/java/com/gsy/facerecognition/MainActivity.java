@@ -1,4 +1,4 @@
-package com.example.gsy.facerecognition;
+package com.gsy.facerecognition;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

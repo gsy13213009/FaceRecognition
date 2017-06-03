@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gsy.facerecognition.MainActivity">
+    tools:context="com.gsy.facerecognition.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
