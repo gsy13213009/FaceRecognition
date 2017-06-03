@@ -88,7 +88,7 @@ public class MyImageView extends ImageView {
         // 判断图片的宽高view的宽高FitCenter状态是竖直fit还是水平fit，如果不能理解可以查看IamgeView源码中的CenterCrop
         // 和FitCenter这两个属性，其实这里是照搬源码
         mIsVerticalFit = mIntrinsicWidth * getLayoutParams().height < getLayoutParams().width * mIntrinsicHeight;
-        setFaceAreaVisibility();
+        checkFace();
         super.setImageDrawable(drawable);
     }
 
@@ -157,7 +157,7 @@ public class MyImageView extends ImageView {
                     mDrawMatrix.set(mTempMatrix);
                     this.setImageMatrix(mDrawMatrix);
                 }
-                setFaceAreaVisibility();
+                checkFace();
                 break;
             }
 
@@ -171,7 +171,7 @@ public class MyImageView extends ImageView {
                     mDrawMatrix.set(mTempMatrix);
                     center(true, true);
                     this.setImageMatrix(mDrawMatrix);
-                    setFaceAreaVisibility();
+                    checkFace();
                     invalidate();
                     if (getMatrixRectF().left > 0 || getMatrixRectF().top > 0) {
                         mTempRectF = getMatrixRectF();
@@ -182,7 +182,7 @@ public class MyImageView extends ImageView {
                         mTempMatrix.postTranslate(0, 0);
                         mDrawMatrix.set(mTempMatrix);
                         this.setImageMatrix(mDrawMatrix);
-                        setFaceAreaVisibility();
+                        checkFace();
                     } else {
                         setAnimation(dxDyBounds);
                     }
@@ -192,24 +192,6 @@ public class MyImageView extends ImageView {
                 break;
         }
         return true;
-    }
-
-
-    /**
-     * 设置人脸未显示全的提示
-     *
-     * @return 该图片是否有脸部未显示全
-     */
-    public boolean setFaceAreaVisibility() {
-        checkFace();
-        boolean needTip = false;
-        for (int i = 0; i < mFaceCount; i++) {
-            if (mIsNeedDraws[i]) {
-                needTip = true;
-                break;
-            }
-        }
-        return needTip;
     }
 
     /**
@@ -362,7 +344,7 @@ public class MyImageView extends ImageView {
             @Override
             public void onAnimationEnd(Animator animation) {
                 setEnabled(true);
-                setFaceAreaVisibility();
+                checkFace();
             }
         });
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
