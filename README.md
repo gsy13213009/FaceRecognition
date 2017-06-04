@@ -3,7 +3,7 @@
 ### 图片的缩放，平移这些需求还是挺常见的，我通过自定义ImageView实现缩放和平移，结合系统提供API实现人脸的识别
 - 代码稍微有点多，首先上演示效果：
 
-![图片的缩放，平移，人脸识别效果.gif](http://github.com/gsy13213009/FaceRecognition/图片的缩放，平移，人脸识别效果.gif?imageMogr2/auto-orient/strip)
+![图片的缩放，平移，人脸识别效果.gif](http://github.com/gsy13213009/FaceRecognition/blob/master/图片的缩放，平移，人脸识别效果.gif?imageMogr2/auto-orient/strip)
 
 - 缩放和平移其实也就是调用ImageView的setImageMatrix方法便可完成，通过计算移动的距离(tx，ty)设置Matrix.postTranslate(tx，ty)，两个手指新距离和按下距离的比值scale以按下时两指的中点设置Matrix.postScale(scale，x，y)，再将Matrix设置为ImageView即可
 - 人脸识别通过系统提供的FaceDetector便可实现，虽然不是很准确，但是目前也只有能达到这种结果，这个类使用的bitmap有两个要求，第一个是必须使用Bitmap.Config.RGB_565格式加载，第二个是bitmap的宽必须为偶数
