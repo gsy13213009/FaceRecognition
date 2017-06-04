@@ -46,7 +46,7 @@ public class MyImageView extends ImageView {
     private boolean mIsCheckRAndL;                                  // 标志是否需要检查左右方向居中状态
     private boolean mIsCheckBAndT;                                  // 标志是否需要检查上下方向居中状态
     private boolean mIsMove;                                        // 是否有位移
-    private float mLastDist;                                         // 两个手刚按下时的距离
+    private float mLastDist;                                        // 两个手刚按下时的距离
     private int mFaceCount;                                         // 识别出的人脸数量，不一定能正确识别
     // 矫正系数，当人脸识别使用的bitmap缩放大小和ImageView使用的bitmap大小不一致时，需要有矫正系数，此demo因
     // 为识别和使用的bitmap是同一个bitmap，因此矫正系数为 识别scale / imageView的scale = 1f,从Activity中传入
@@ -145,6 +145,7 @@ public class MyImageView extends ImageView {
                     } else {
                         mResetScale = 0;
                     }
+
                 } else if (mTouchMode == SINGLE_OPERATION) {
                     mTempMatrix.set(mSavedMatrix);
                     float tx = ev.getX() - mLastX;
@@ -331,7 +332,7 @@ public class MyImageView extends ImageView {
     /**
      * 设置边界回弹的动画
      *
-     * @param bounds 需要回弹偏移量
+     * @param bounds 需要回弹的偏移量
      */
     private void setAnimation(float[] bounds) {
         setEnabled(false);
@@ -350,6 +351,7 @@ public class MyImageView extends ImageView {
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             float lastDx = 0;
             float lastDy = 0;
+
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float offsetX = floatDx * animation.getAnimatedFraction() - lastDx;
