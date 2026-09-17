@@ -51,9 +51,9 @@ public class MainActivity extends Activity {
                 float eyesDistance = faces[i].eyesDistance();
                 faces[i].getMidPoint(pointF);
                 if (pointF.x < eyesDistance                                              // 左边超出
-                        || pointF.y < eyesDistance * 2f                                // 上边超出
+                        || pointF.y < eyesDistance * 1.8f                               // 上边超出
                         || srcBitmap.getWidth() - pointF.x < eyesDistance                // 右边超出
-                        || srcBitmap.getHeight() - pointF.y < eyesDistance * 2f) {     // 下边超出
+                        || srcBitmap.getHeight() - pointF.y < eyesDistance * 1.8f) {    // 下边超出
                     faces[i] = null;
                 }
             }
